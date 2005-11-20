@@ -1,10 +1,11 @@
 Summary:	webapps
 Name:		webapps
 Version:	0.1
-Release:	0.2
+Release:	0.4
 License:	GPL
 Group:		Applications/WWW
-Source0:	%{name}.README
+Source0:	%{name}.sh
+Source1:	%{name}.README
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -16,10 +17,12 @@ and webserver config fragments in unified place.
 
 %prep
 cp %{SOURCE0} README
+cp %{SOURCE1} webapps
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_sbindir}}
+install %{SOURCE0} $RPM_BUILD_ROOT%{_sbindir}/webapp
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -28,3 +31,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README
 %dir %attr(751,root,http) %{_sysconfdir}
+%attr(755,root,root) %{_sbindir}/*
