@@ -17,18 +17,35 @@ usage() {
 Usage: $0 register httpd webapp
 Usage: $0 unregister httpd webapp
 
-Where httpd one of the webservers
+Where httpd is one of the webservers
 apache 1.x: apache
 apache 2.x: httpd
 lighttpd: lighttpd
 EOF
 }
 
+die() {
+	echo >&2 "$0: $*"
+	exit 1
+}
+
+checkconfig() {
+	# sanity check
+	if [ ! -d "$webapps/$app" ]; then
+		die "Missing directory: $webapps/$app"
+	fi
+	if [ ! -d "/etc/$httpd/webapps" ]; then
+		die "Missing directory: /etc/$httpd/webapps"
+	fi
+}
+
 case "$action" in
 register)
+	checkconfig
 	webapp_register
 	;;
 unregister)
+	checkconfig
 	webapp_unregister
 	;;
 *)
