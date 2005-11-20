@@ -1,21 +1,26 @@
 #!/bin/sh
 webapps=/etc/webapps
 action="$1"
-webserver="$2"
+httpd="$2"
 app="$3"
 
 webapp_register() {
-	ln -sf $webapps/$app/$webserver.conf /etc/$webserver/webapps/$app.conf
+	ln -sf $webapps/$app/$httpd.conf /etc/$httpd/webapps/$app.conf
 }
 
 webapp_unregister() {
-	rm -f /etc/$webserver/webapps/$app.conf
+	rm -f /etc/$httpd/webapps/$app.conf
 }
 
 usage() {
 	cat >&2 <<EOF
-Usage: $0 register webserver webapp
-Usage: $0 unregister webserver webapp
+Usage: $0 register httpd webapp
+Usage: $0 unregister httpd webapp
+
+Where httpd one of the webservers
+apache 1.x: apache
+apache 2.x: httpd
+lighttpd: lighttpd
 EOF
 }
 
