@@ -1,0 +1,7 @@
+webapps
+
+webapps are applications that are designed to run under webserver.
+goal of this package is to have web applications work under any webserver
+available in PLD Linux.
+
+top directory /etc/webapps
