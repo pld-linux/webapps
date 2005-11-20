@@ -5,11 +5,11 @@ httpd="$2"
 app="$3"
 
 webapp_register() {
-	ln -sf $webapps/$app/$httpd.conf /etc/$httpd/webapps/$app.conf
+	ln -sf $webapps/$app/$httpd.conf /etc/$httpd/webapps.d/$app.conf
 }
 
 webapp_unregister() {
-	rm -f /etc/$httpd/webapps/$app.conf
+	rm -f /etc/$httpd/webapps.d/$app.conf
 }
 
 usage() {
@@ -34,8 +34,8 @@ checkconfig() {
 	if [ ! -d "$webapps/$app" ]; then
 		die "Missing directory: $webapps/$app"
 	fi
-	if [ ! -d "/etc/$httpd/webapps" ]; then
-		die "Missing directory: /etc/$httpd/webapps"
+	if [ ! -d "/etc/$httpd/webapps.d" ]; then
+		die "Missing directory: /etc/$httpd/webapps.d"
 	fi
 }
 

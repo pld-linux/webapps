@@ -23,6 +23,6 @@ where $httpd is:
 
 additionally the webserver configuration is linked to webserver config directory
 which is
-apache 1.x: /etc/apache/webapps
-apache 2.x: /etc/httpd/webapps
-lighttpd: /etc/lighttpd/webapps
+apache 1.x: /etc/apache/webapps.d
+apache 2.x: /etc/httpd/webapps.d
+lighttpd: /etc/lighttpd/webapps.d
