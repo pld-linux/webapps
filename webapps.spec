@@ -17,7 +17,6 @@ and webserver config fragments in unified place.
 
 %prep
 cp %{SOURCE0} README
-cp %{SOURCE1} webapps
 
 %install
 rm -rf $RPM_BUILD_ROOT
