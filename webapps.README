@@ -1,7 +1,24 @@
 webapps
 
 webapps are applications that are designed to run under webserver.
+
 goal of this package is to have web applications work under any webserver
 available in PLD Linux.
 
 top directory /etc/webapps
+
+application configuration
+this could whatever format application uses, php script, text file, python file.
+location: /etc/webapps/$webapp
+
+configuration for webserver
+this is configuration file fragment for specific webserver in webserver native
+config file format.
+
+location: /etc/webapps/$webapp/$http.conf
+
+additionally the webserver configuration is linked to webserver config directory
+which is
+apache 1.x: /etc/apache/webapps
+apache 2.x: /etc/httpd/webapps
+lighttpd: /etc/lighttpd/webapps
