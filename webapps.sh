@@ -21,10 +21,10 @@ EOF
 
 case "$action" in
 register)
-	webapp_register "$webserver" "$app"
+	webapp_register
 	;;
 unregister)
-	webapp_unregister "$webserver" "$app"
+	webapp_unregister
 	;;
 *)
 	usage
