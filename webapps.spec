@@ -14,12 +14,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 webapps is a package for having web applications configuration files
 and webserver config fragments in unified place.
 
-webserver configs are in $webapps/$httpd
-web application configs are in $webapps/configs/$webapp
-
-individual directory for $webapps/$httpd is provided by webserver
-itself.
-
 %prep
 cp %{SOURCE0} README
 
