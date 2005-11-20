@@ -1,4 +1,5 @@
-Summary:	webapps
+Summary:	webapps framework
+Summary(pl):	Szkielet dla aplikacji WWW
 Name:		webapps
 Version:	0.1
 Release:	0.4
@@ -15,7 +16,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 webapps is a package for having web applications configuration files
 and webserver config fragments in unified place.
 
+%description -l pl
+webapps to pakiet pozwalaj±cy trzymaæ pliki konfiguracyjne aplikacji
+WWW i fragmenty konfiguracji serwera WWW w jednym miejscu.
+
 %prep
+%setup -q -c -T
 cp %{SOURCE0} README
 
 %install
