@@ -19,7 +19,7 @@ cp %{SOURCE0} README
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/config
+install -d $RPM_BUILD_ROOT%{_sysconfdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -28,4 +28,3 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README
 %dir %attr(751,root,http) %{_sysconfdir}
-%dir %attr(751,root,http) %{_sysconfdir}/config
