@@ -15,7 +15,11 @@ configuration for webserver
 this is configuration file fragment for specific webserver in webserver native
 config file format.
 
-location: /etc/webapps/$webapp/$http.conf
+location: /etc/webapps/$webapp/$http.conf 
+where $http is:
+- apache for apache 1.x
+- httpd for apache 2.x
+- lighttpd for lighttpd
 
 additionally the webserver configuration is linked to webserver config directory
 which is
