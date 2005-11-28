@@ -2,11 +2,12 @@ Summary:	webapps framework
 Summary(pl):	Szkielet dla aplikacji WWW
 Name:		webapps
 Version:	0.1
-Release:	0.6
+Release:	0.9
 License:	GPL
 Group:		Applications/WWW
 Source0:	%{name}.sh
 Source1:	%{name}.README
+Requires:	webserver
 Conflicts:	apache1 < 1.3.34-3.2
 # can't conflict apache2 as apache1 is matched.
 #Conflicts:	apache < 2.0.55-2.2
