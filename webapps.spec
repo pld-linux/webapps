@@ -2,14 +2,14 @@ Summary:	webapps framework
 Summary(pl):	Szkielet dla aplikacji WWW
 Name:		webapps
 Version:	0.1
-Release:	0.9
+Release:	1
 License:	GPL
 Group:		Applications/WWW
 Source0:	%{name}.sh
 Source1:	%{name}.README
 Requires:	webserver
 Conflicts:	apache1 < 1.3.34-3.2
-# can't conflict apache2 as apache1 is matched.
+# can't conflict apache2 as apache1 is matched. just hope the best for now
 #Conflicts:	apache < 2.0.55-2.2
 Conflicts:	lighttpd < 1.4.7-2.1
 BuildArch:	noarch
@@ -26,7 +26,7 @@ webapps to pakiet pozwalaj±cy trzymaæ pliki konfiguracyjne aplikacji
 WWW i fragmenty konfiguracji serwera WWW w jednym miejscu.
 
 %prep
-%setup -q -c -T
+%setup -qcT
 cp %{SOURCE0} README
 
 %install
