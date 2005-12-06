@@ -1,5 +1,6 @@
 #!/bin/sh
 webapps=/etc/webapps
+webservers='apache httpd lighttpd'
 action="$1"
 httpd="$2"
 app="$3"
@@ -16,6 +17,19 @@ webapp_register() {
 webapp_unregister() {
 	local link=$(webapp_link $app)
 	rm -f /etc/$httpd/webapps.d/$link.conf
+}
+
+webapp_list() {
+	echo "registered webapps${1:+ for $1}":
+	for server in ${1:-$webservers}; do
+		[ -d /etc/$server/webapps.d ] || continue
+		echo "$server:"
+		for conf in /etc/$server/webapps.d/*; do
+			[ -L $conf ] || continue
+			app=$(readlink $conf | sed -e "s,$webapps/,,;s,/$server.conf$,,")
+			echo "- $app"
+		done
+	done
 }
 
 usage() {
@@ -58,6 +72,9 @@ register)
 unregister)
 	checkconfig
 	webapp_unregister
+	;;
+list)
+	webapp_list $2
 	;;
 *)
 	usage
