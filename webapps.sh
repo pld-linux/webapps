@@ -55,12 +55,17 @@ die() {
 }
 
 checkconfig() {
+	if [ -z "$httpd" ] || [ -z "$app" ]; then
+	   	usage
+		return
+	fi
+
 	# sanity check
 	if [ ! -d "$webapps/$app" ]; then
-		die "Missing directory: $webapps/$app"
+		die "'$app' is not webapp? (Missing directory: $webapps/$app)"
 	fi
 	if [ ! -d "/etc/$httpd/webapps.d" ]; then
-		die "Missing directory: /etc/$httpd/webapps.d"
+		die "'$httpd' is not a webserver? (Missing directory: /etc/$httpd/webapps.d)"
 	fi
 }
 
