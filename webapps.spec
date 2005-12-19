@@ -2,7 +2,7 @@ Summary:	webapps framework
 Summary(pl):	Szkielet dla aplikacji WWW
 Name:		webapps
 Version:	0.2
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/WWW
 Source0:	%{name}.sh
@@ -27,7 +27,7 @@ WWW i fragmenty konfiguracji serwera WWW w jednym miejscu.
 
 %prep
 %setup -qcT
-cp %{SOURCE0} README
+cp %{SOURCE1} README
 
 %install
 rm -rf $RPM_BUILD_ROOT
