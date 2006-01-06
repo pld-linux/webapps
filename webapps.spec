@@ -7,9 +7,10 @@ License:	GPL
 Group:		Applications/WWW
 Source0:	%{name}.sh
 Source1:	%{name}.README
+Requires:	coreutils
 Requires:	webserver
-Conflicts:	apache1 < 1.3.34-3.2
 Conflicts:	apache < 2.0.55-2.2
+Conflicts:	apache1 < 1.3.34-3.2
 Conflicts:	lighttpd < 1.4.7-2.1
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
