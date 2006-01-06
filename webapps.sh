@@ -69,7 +69,7 @@ die() {
 checkconfig() {
 	if [ -z "$httpd" ] || [ -z "$app" ]; then
 		usage
-		return
+		return 1
 	fi
 
 	# sanity check
@@ -83,12 +83,10 @@ checkconfig() {
 
 case "$action" in
 register)
-	checkconfig
-	webapp_register
+	checkconfig && webapp_register
 	;;
 unregister)
-	checkconfig
-	webapp_unregister
+	checkconfig && webapp_unregister
 	;;
 list)
 	webapp_list $2
