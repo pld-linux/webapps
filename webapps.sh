@@ -1,4 +1,5 @@
 #!/bin/sh
+
 webapps=/etc/webapps
 webservers='apache httpd lighttpd'
 action="$1"
@@ -32,12 +33,23 @@ webapp_list() {
 	done
 }
 
+webapp_list_apps() {
+	echo "available webapps${1:+ for $1}":
+	for server in ${1:-\\*}; do
+		for app in `ls /etc/webapps`; do
+			eval find /etc/webapps/$app -name $server.conf -printf '"- $app\n"'
+		done | uniq
+	done
+}
+
 usage() {
 	cat >&2 <<EOF
 Usage: $0 register httpd webapp
 Usage: $0 register httpd webapp/module
 Usage: $0 unregister httpd webapp
 Usage: $0 unregister httpd webapp/module
+Usage: $0 list [$webservers]
+Usage: $0 list-apps [$webservers]
 
 Where httpd is one of the webservers
 apache 1.x: apache
@@ -56,7 +68,7 @@ die() {
 
 checkconfig() {
 	if [ -z "$httpd" ] || [ -z "$app" ]; then
-	   	usage
+		usage
 		return
 	fi
 
@@ -80,6 +92,9 @@ unregister)
 	;;
 list)
 	webapp_list $2
+	;;
+list-apps)
+	webapp_list_apps $2
 	;;
 *)
 	usage
