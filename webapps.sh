@@ -35,10 +35,17 @@ webapp_list() {
 
 webapp_list_apps() {
 	echo "available webapps${1:+ for $1}":
-	for server in ${1:-\\*}; do
-		for app in `ls /etc/webapps`; do
-			eval find /etc/webapps/$app -name $server.conf -printf '"- $app\n"'
-		done | uniq
+	for app in /etc/webapps/*; do
+		[ -d $app ] || continue
+
+		servers=""
+		for server in ${1:-$webservers}; do
+			[ -f $app/$server.conf ] || continue
+			servers="$servers${servers:+ }$server"
+		done
+
+		[ "$servers" ] || continue
+		echo "- $(basename $app) ($servers)"
 	done
 }
 
@@ -57,7 +64,7 @@ apache 2.x: httpd
 lighttpd: lighttpd
 
 webapp modules are supported,
-drupal tinymce module webapp name would be drupal/tinymce.
+"drupal tinymce" module webapp name would be "drupal/tinymce".
 EOF
 }
 
