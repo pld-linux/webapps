@@ -12,7 +12,7 @@ webapp_link() {
 
 webapp_register() {
 	local link=$(webapp_link $app)
-	ln -sf $webapps/$app/$httpd.conf /etc/$httpd/webapps.d/$link.conf
+	ln -sf ../../..$webapps/$app/$httpd.conf /etc/$httpd/webapps.d/$link.conf
 }
 
 webapp_unregister() {
@@ -27,7 +27,7 @@ webapp_list() {
 		echo "$server:"
 		for conf in /etc/$server/webapps.d/*; do
 			[ -L $conf ] || continue
-			app=$(readlink $conf | sed -e "s,$webapps/,,;s,/$server.conf$,,")
+			app=$(basename $conf .conf)
 			echo "- $app"
 		done
 	done
