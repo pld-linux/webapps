@@ -2,7 +2,7 @@ Summary:	webapps framework
 Summary(pl):	Szkielet dla aplikacji WWW
 Name:		webapps
 Version:	0.2
-Release:	5
+Release:	6
 License:	GPL
 Group:		Applications/WWW
 Source0:	%{name}.sh
