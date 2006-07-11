@@ -26,3 +26,24 @@ which is
 apache 1.x: /etc/apache/webapps.d
 apache 2.x: /etc/httpd/webapps.d
 lighttpd: /etc/lighttpd/webapps.d
+
+
+each webserver may provide webserver(feature) virtual. currently used ones are:
+
+- webserver(url_access)
+module that provides possibility restrict/allow access (deny from all) to paths or urls
+apache1/apache2.0/lighttpd: mod_access
+apache2.2: mod_authz_host
+
+- webserver(url_alias)
+module that provides possibility to map local paths to url aliases
+apache1/apache2.x/lighttpd: mod_alias
+
+- webserver(authentication)
+module that provides way to restrict access by password
+apache1/apache2.x/lighttpd: mod_auth
+
+- webserver(indexfile)
+module that provides way to handle "directory" urls (urls ending with slash)
+apache1/apache2.x: mod_dir
+lighttpd: mod_indexfile
