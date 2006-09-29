@@ -42,7 +42,7 @@ webapp_applist() {
 	for app in /etc/webapps/*; do
 		[ -d $app ] || continue
 		[ -f $app/$server.conf ] || continue
-		local appname=$(basename $app)
+		local appname=${app##*/}
 		local link=$(webapp_link $appname)
 
 		case "$action" in
@@ -71,7 +71,7 @@ webapp_list_apps() {
 		done
 
 		[ "$servers" ] || continue
-		echo "- $(basename $app) ($servers)"
+		echo "- ${app##*/} ($servers)"
 	done
 }
 
