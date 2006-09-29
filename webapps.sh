@@ -33,13 +33,39 @@ webapp_list() {
 	done
 }
 
+# return application list for webserver
+# useful for bash_completion parsing
+webapp_applist() {
+	local action="$1"
+	local server=$2
+
+	for app in /etc/webapps/*; do
+		[ -d $app ] || continue
+		[ -f $app/$server.conf ] || continue
+		local appname=$(basename $app)
+		local link=$(webapp_link $appname)
+
+		case "$action" in
+		*-registered)
+			[ -f /etc/$server/webapps.d/$link.conf ] && echo $appname
+			;;
+		*-unregistered)
+			[ -f /etc/$server/webapps.d/$link.conf ] || echo $appname
+			;;
+		*)
+			echo $appname
+		;;
+		esac
+	done
+}
+
 webapp_list_apps() {
-	echo "available webapps${1:+ for $1}":
+	echo "available webapps"
 	for app in /etc/webapps/*; do
 		[ -d $app ] || continue
 
 		servers=""
-		for server in ${1:-$webservers}; do
+		for server in $webservers; do
 			[ -f $app/$server.conf ] || continue
 			servers="$servers${servers:+ }$server"
 		done
@@ -98,8 +124,12 @@ unregister)
 list)
 	webapp_list $2
 	;;
-list-apps)
-	webapp_list_apps $2
+list-apps|list-apps-registered|list-apps-unregistered)
+	if [ "$2" ]; then
+		webapp_applist $action $2
+	else
+		webapp_list_apps
+	fi
 	;;
 *)
 	usage
