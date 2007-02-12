@@ -1,5 +1,5 @@
 Summary:	webapps framework
-Summary(pl.UTF-8):   Szkielet dla aplikacji WWW
+Summary(pl.UTF-8):	Szkielet dla aplikacji WWW
 Name:		webapps
 Version:	0.3
 Release:	2
