@@ -2,7 +2,7 @@ Summary:	webapps framework
 Summary(pl.UTF-8):	Szkielet dla aplikacji WWW
 Name:		webapps
 Version:	0.3
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/WWW
 Source0:	%{name}.README
@@ -27,6 +27,19 @@ and webserver config fragments in unified place.
 webapps to pakiet pozwalający trzymać pliki konfiguracyjne aplikacji
 WWW i fragmenty konfiguracji serwera WWW w jednym miejscu.
 
+%package -n bash-completion-webapps
+Summary:	bash completion for webapps
+Summary(pl.UTF-8):	Dopełnienia basha dla webapps
+Group:		Applications/Shells
+Requires:	%{name} = %{version}-%{release}
+Requires:	bash-completion
+
+%description -n bash-completion-webapps
+Bash completion for webapps.
+
+%description -n bash-completion-webapps -l pl.UTF-8
+Dopełnienia basha dla webapps.
+
 %prep
 %setup -qcT
 cp %{SOURCE0} README
@@ -45,4 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README
 %dir %attr(751,root,http) %{_sysconfdir}
 %attr(755,root,root) %{_sbindir}/*
+
+%files -n bash-completion-webapps
+%defattr(644,root,root,755)
 %{_bashcompletiondir}/webapp
