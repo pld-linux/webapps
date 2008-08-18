@@ -51,3 +51,13 @@ lighttpd: mod_indexfile
 - webserver(cgi)
 module that provides way CGI interface
 apache1/apache2.x/lighttpd: mod_cgi
+
+- webserver(setenv)
+passing of environments to CGI scripts
+apache1/apache2.x: mod_env
+lighttpd: mod_setenv
+
+- webserver(php)
+running PHP engine
+apache1/apache2.x: mod_php4, mod_php
+lighttpd: php4-fcgi, php-fcgi, mod_cgi_php
