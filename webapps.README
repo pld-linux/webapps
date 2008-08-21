@@ -57,6 +57,11 @@ passing of environments to CGI scripts
 apache1/apache2.x: mod_env
 lighttpd: mod_setenv
 
+- webserver(expires)
+Controls the setting of the the Expire response header.
+apache1/apache2.x: mod_expires
+lighttpd: mod_expire
+
 - webserver(php)
 running PHP engine
 apache1/apache2.x: mod_php4, mod_php
