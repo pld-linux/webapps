@@ -49,6 +49,32 @@ webapp_apps_registered() {
 	done
 }
 
+# return application list for webserver
+# useful for bash_completion parsing
+webapp_applist() {
+	local action="$1"
+	local server=$2
+
+	for app in /etc/webapps/*; do
+		[ -d $app ] || continue
+		[ -f $app/$server.conf ] || continue
+		local appname=${app##*/}
+		local link=$(webapp_link $appname)
+
+		case "$action" in
+		*-registered)
+			[ -f /etc/$server/webapps.d/$link.conf ] && echo $appname
+			;;
+		*-unregistered)
+			[ -f /etc/$server/webapps.d/$link.conf ] || echo $appname
+			;;
+		*)
+			echo $appname
+		;;
+		esac
+	done
+}
+
 webapp_list_apps() {
 	echo "available webapps"
 	for app in /etc/webapps/*; do
