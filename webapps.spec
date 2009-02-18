@@ -2,14 +2,13 @@ Summary:	webapps framework
 Summary(pl.UTF-8):	Szkielet dla aplikacji WWW
 Name:		webapps
 Version:	0.3.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/WWW
 Source0:	%{name}.README
 Source1:	%{name}.sh
 Source2:	webapp-bash_completion.sh
 Requires:	coreutils
-Requires:	webserver
 Conflicts:	apache < 2.0.55-2.2
 Conflicts:	apache1 < 1.3.34-3.2
 Conflicts:	lighttpd < 1.4.7-2.1
