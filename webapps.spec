@@ -41,13 +41,13 @@ Dopełnienia basha dla webapps.
 
 %prep
 %setup -qcT
-cp %{SOURCE0} README
+cp -p %{SOURCE0} README
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_sbindir},%{_bashcompletiondir}}
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sbindir}/webapp
-install %{SOURCE2} $RPM_BUILD_ROOT%{_bashcompletiondir}/webapp
+install -p %{SOURCE1} $RPM_BUILD_ROOT%{_sbindir}/webapp
+install -p %{SOURCE2} $RPM_BUILD_ROOT%{_bashcompletiondir}/webapp
 
 %clean
 rm -rf $RPM_BUILD_ROOT
