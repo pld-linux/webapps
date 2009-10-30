@@ -66,3 +66,8 @@ lighttpd: mod_expire
 running PHP engine
 apache1/apache2.x: mod_php4, mod_php
 lighttpd: php4-fcgi, php-fcgi, mod_cgi_php
+
+- webserver(mime)
+module that provides way to handle serve static content with Content-Type header depending of file extension
+apache1/apache2.x: mod_mime
+lighttpd: core itself
