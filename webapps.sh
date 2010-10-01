@@ -27,7 +27,7 @@ webapp_list() {
 		echo "$server:"
 		for conf in /etc/$server/webapps.d/*; do
 			[ -L $conf ] || continue
-			app=$(readlink $conf | sed -e "s,.*$webapps/,,;s,/$server.conf$,,")
+			app=$(readlink -f $conf | sed -e "s,$webapps/,,;s,/$server.conf$,,")
 			echo "- $app"
 		done
 	done
