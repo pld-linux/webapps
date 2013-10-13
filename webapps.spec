@@ -5,9 +5,9 @@ Version:	0.3.1
 Release:	5
 License:	GPL
 Group:		Applications/WWW
-Source0:	%{name}.README
+Source0:	README
 Source1:	%{name}.sh
-Source2:	webapp-bash_completion.sh
+Source2:	bash_completion.sh
 Requires:	coreutils
 Conflicts:	apache < 2.0.55-2.2
 Conflicts:	apache1 < 1.3.34-3.2
