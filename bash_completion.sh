@@ -1,5 +1,3 @@
-have webapp && {
-
 # webapp(1) completion
 #
 _webapp()
@@ -37,4 +35,3 @@ _webapp()
 }
 
 complete -F _webapp webapp
-}

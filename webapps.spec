@@ -8,6 +8,7 @@ Group:		Applications/WWW
 Source0:	README
 Source1:	%{name}.sh
 Source2:	bash_completion.sh
+BuildRequires:	rpmbuild(macros) >= 1.673
 Requires:	coreutils
 Conflicts:	apache < 2.0.55-2.2
 Conflicts:	apache1 < 1.3.34-3.2
@@ -16,7 +17,6 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc/webapps
-%define		_bashcompletiondir	/etc/bash_completion.d
 
 %description
 webapps is a package for having web applications configuration files
@@ -31,7 +31,7 @@ Summary:	bash completion for webapps
 Summary(pl.UTF-8):	Dopełnienia basha dla webapps
 Group:		Applications/Shells
 Requires:	%{name} = %{version}-%{release}
-Requires:	bash-completion
+Requires:	bash-completion >= 2.0
 
 %description -n bash-completion-webapps
 Bash completion for webapps.
@@ -45,9 +45,9 @@ cp -p %{SOURCE0} README
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_sbindir},%{_bashcompletiondir}}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_sbindir},%{bash_compdir}}
 install -p %{SOURCE1} $RPM_BUILD_ROOT%{_sbindir}/webapp
-install -p %{SOURCE2} $RPM_BUILD_ROOT%{_bashcompletiondir}/webapp
+install -p %{SOURCE2} $RPM_BUILD_ROOT%{bash_compdir}/webapp
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -60,4 +60,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n bash-completion-webapps
 %defattr(644,root,root,755)
-%{_bashcompletiondir}/webapp
+%{bash_compdir}/webapp
