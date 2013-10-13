@@ -34,6 +34,7 @@ each webserver may provide webserver(feature) virtual. currently used ones are:
 module that provides possibility restrict/allow access (deny from all) to paths or urls
 apache1/apache2.0/lighttpd: mod_access
 apache2.2: mod_authz_host
+apache2.4: mod_authz_host which pulls mod_authz_core
 
 - webserver(alias)
 module that provides possibility to map local paths to url aliases
