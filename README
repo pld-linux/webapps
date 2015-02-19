@@ -63,10 +63,15 @@ Controls the setting of the the Expire response header.
 apache1/apache2.x: mod_expires
 lighttpd: mod_expire
 
+- webserver(headers)
+Module allows for the customization of HTTP response headers.
+apache1/apache2.x: mod_headers
+lighttpd: core itself
+
 - webserver(php)
 running PHP engine
 apache1/apache2.x: mod_php4, mod_php
-lighttpd: php4-fcgi, php-fcgi, mod_cgi_php
+lighttpd: php-fpm, php-fcgi, mod_cgi_php
 
 - webserver(mime)
 module that provides way to handle serve static content with Content-Type header depending of file extension
