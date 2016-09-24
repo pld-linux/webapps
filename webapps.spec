@@ -56,7 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README
 %dir %attr(751,root,http) %{_sysconfdir}
-%attr(755,root,root) %{_sbindir}/*
+%attr(755,root,root) %{_sbindir}/webapp
 
 %files -n bash-completion-webapps
 %defattr(644,root,root,755)
